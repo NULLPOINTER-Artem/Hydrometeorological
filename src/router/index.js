@@ -10,7 +10,7 @@ const router = createRouter({
       name: 'posts-view',
       component: PostsView,
       meta: {
-        title: 'Posts Page - TM'
+        title: 'Posts Page'
       }
     },
     {
@@ -18,7 +18,7 @@ const router = createRouter({
       name: 'map-view',
       component: MapView,
       meta: {
-        title: 'Map Page - TM'
+        title: 'Map Page'
       }
     },
     {
