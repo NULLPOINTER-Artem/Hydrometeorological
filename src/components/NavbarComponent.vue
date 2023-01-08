@@ -5,10 +5,10 @@ import { RouterLink } from 'vue-router';
 <template>
   <nav class="navbar">
     <div class="navbar__item">
-      <RouterLink :to="{ name: 'posts-view' }">Posts</RouterLink>
+      <RouterLink :to="{ path: '/posts' }">Posts</RouterLink>
     </div>
     <div class="navbar__item">
-      <RouterLink :to="{ name: 'posts-view' }">Map</RouterLink>
+      <RouterLink :to="{ path: '/map' }">Map</RouterLink>
     </div>
   </nav>
 </template>

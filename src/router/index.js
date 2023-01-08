@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import PostsView from '../views/PostsView.vue';
+import MapView from '../views/MapView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,13 +8,29 @@ const router = createRouter({
     {
       path: '/posts',
       name: 'posts-view',
-      component: PostsView
+      component: PostsView,
+      meta: {
+        title: 'Posts Page - TM'
+      }
+    },
+    {
+      path: '/map',
+      name: 'map-view',
+      component: MapView,
+      meta: {
+        title: 'Map Page - TM'
+      }
     },
     {
       path: '/:pathMatch(.*)*',
       redirect: { name: 'posts-view' }
     }
   ]
-})
+});
+
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title}`;
+  next();
+});
 
 export default router;

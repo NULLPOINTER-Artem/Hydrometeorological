@@ -5,6 +5,10 @@ const props = defineProps({
   page: {
     type: Number,
     required: true,
+  },
+  isLastPage: {
+    type: Boolean,
+    required: true
   }
 });
 
@@ -33,9 +37,10 @@ watch(selectedLimit, (newVal) => emit('selected-limit', newVal));
       <button
         type="button"
         class="pagination-control__prev"
+        :disabled="$props.page === 1"
         @click="$emit('prev')"
       >
-        &#8592;
+        &#8606;
       </button>
       <div class="pagination-control__page">
         {{ $props.page }}
@@ -43,9 +48,10 @@ watch(selectedLimit, (newVal) => emit('selected-limit', newVal));
       <button
         type="button"
         class="pagination-control__next"
+        :disabled="$props.isLastPage"
         @click="$emit('next')"
       >
-        &#8594;
+        &#8608;
       </button>
     </div>
   </div>
@@ -63,10 +69,11 @@ watch(selectedLimit, (newVal) => emit('selected-limit', newVal));
 
 .pagination-limit {
   margin-right: 50px;
+  padding: 5px 10px;
 
   &__option {
     &:checked {
-      color: aqua;
+      display: none;
     }
   }
 }
@@ -81,9 +88,19 @@ watch(selectedLimit, (newVal) => emit('selected-limit', newVal));
     border-radius: 50%;
     text-align: center;
     vertical-align: middle;
+    padding: 5px 10px;
 
     &:hover {
       opacity: 0.8;
+    }
+
+    &:disabled {
+      background-color: gray;
+
+      &:hover {
+        opacity: 1;
+        cursor: default;
+      }
     }
   }
 
